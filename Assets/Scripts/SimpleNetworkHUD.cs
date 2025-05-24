@@ -11,7 +11,7 @@ public class SimpleNetworkHUD : MonoBehaviour
         var nm = NetworkManager.Singleton;
         if (nm == null) return;
 
-        const int W = 160, H = 30;
+        const int W = 600, H = 120;
         GUILayout.BeginArea(new Rect(10, 10, W + 20, H * 6));
 
         if (!nm.IsClient && !nm.IsServer)
@@ -42,7 +42,7 @@ public class SimpleNetworkHUD : MonoBehaviour
             GUILayout.Label(nm.IsHost ? $"Host  (code: {joinCode})"
                                       : nm.IsServer ? "Dedicated Server"
                                       : "Client");
-            if (GUILayout.Button("Disconnect", GUILayout.Width(W), GUILayout.Height(H)))
+            if (GUILayout.Button("Disconnect", GUILayout.Width(W/5), GUILayout.Height(H/4)))
             {
                 _ = SessionManager.Instance.LeaveAsync();
                 joinCode = "";

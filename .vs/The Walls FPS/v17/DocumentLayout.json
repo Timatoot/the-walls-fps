@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|c:\\users\\timr\\code\\fps\\the walls fps\\assets\\scripts\\gun\\guninput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gun\\guninput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\assets\\scripts\\simplenetworkhud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\simplenetworkhud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|c:\\users\\timr\\code\\fps\\the walls fps\\assets\\scripts\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\assets\\scripts\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|c:\\users\\timr\\code\\fps\\the walls fps\\assets\\scripts\\ugsbootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\assets\\scripts\\ugsbootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ugsbootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\assets\\starterassets\\firstpersoncontroller\\scripts\\firstpersoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|solutionrelative:assets\\starterassets\\firstpersoncontroller\\scripts\\firstpersoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\assets\\scripts\\gun\\guninput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gun\\guninput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{71B2542A-6A5A-5093-4839-3D609717C0DC}|Assembly-CSharp.csproj|C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\assets\\scripts\\gun\\gunserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,11 +46,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SessionManager.cs",
               "DocumentMoniker": "C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\Assets\\Scripts\\SessionManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SessionManager.cs",
@@ -63,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UgsBootstrap.cs",
               "DocumentMoniker": "C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\Assets\\Scripts\\UgsBootstrap.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UgsBootstrap.cs",
@@ -76,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "FirstPersonController.cs",
               "DocumentMoniker": "C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\Assets\\StarterAssets\\FirstPersonController\\Scripts\\FirstPersonController.cs",
               "RelativeDocumentMoniker": "Assets\\StarterAssets\\FirstPersonController\\Scripts\\FirstPersonController.cs",
@@ -84,7 +84,8 @@
               "RelativeToolTip": "Assets\\StarterAssets\\FirstPersonController\\Scripts\\FirstPersonController.cs",
               "ViewState": "AQIAAHgAAAAAAAAAAAArwJUAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-20T00:30:09.296Z"
+              "WhenOpened": "2025-05-20T00:30:09.296Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -96,7 +97,8 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\HealthBarUI.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T20:23:04.54Z"
+              "WhenOpened": "2025-05-19T20:23:04.54Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -108,7 +110,8 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerHealth.cs",
               "ViewState": "AQIAABwAAAAAAAAAAAAowDUAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T18:49:00.59Z"
+              "WhenOpened": "2025-05-19T18:49:00.59Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -120,7 +123,8 @@
               "RelativeToolTip": "Assets\\Scripts\\Gun\\GunFX.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T18:48:08.608Z"
+              "WhenOpened": "2025-05-19T18:48:08.608Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -132,29 +136,31 @@
               "RelativeToolTip": "Assets\\Scripts\\Gun\\GunServer.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAQwBoAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T18:47:36.233Z"
+              "WhenOpened": "2025-05-19T18:47:36.233Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "GunInput.cs",
               "DocumentMoniker": "C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\Assets\\Scripts\\Gun\\GunInput.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Gun\\GunInput.cs",
               "ToolTip": "C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\Assets\\Scripts\\Gun\\GunInput.cs",
               "RelativeToolTip": "Assets\\Scripts\\Gun\\GunInput.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAwwEQAAAA1AAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwCkAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T18:46:21.902Z"
+              "WhenOpened": "2025-05-19T18:46:21.902Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SimpleNetworkHUD.cs",
               "DocumentMoniker": "C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\Assets\\Scripts\\SimpleNetworkHUD.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SimpleNetworkHUD.cs",
               "ToolTip": "C:\\Users\\TimR\\Code\\FPS\\The Walls FPS\\Assets\\Scripts\\SimpleNetworkHUD.cs",
               "RelativeToolTip": "Assets\\Scripts\\SimpleNetworkHUD.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABYAAAARAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwC4AAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T00:14:47.701Z",
               "EditorCaption": ""

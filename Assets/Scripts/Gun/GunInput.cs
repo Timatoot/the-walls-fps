@@ -1,30 +1,50 @@
-using Unity.Netcode;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Cinemachine;
+using Unity.Netcode;
 
 [RequireComponent(typeof(GunServer), typeof(GunFx))]
 public class GunInput : NetworkBehaviour
 {
-    [Header("Refs")]
-    [SerializeField] Transform muzzle;
+    [Header("Visual Shake")]
+    [SerializeField] private CinemachineImpulseSource impulseSource;
+
+    [Header("Real Aim Kick")]
+    [SerializeField] private CinemachineCamera cinemachineCamera;
+    private CinemachinePanTilt panTilt;
+
+    [Header("References")]
+    [SerializeField] private Transform muzzle;
 
     [Header("Tuning")]
-    [SerializeField] float fireRate = 8f;
-    [SerializeField] float recoilKick = 0.24f;        // degrees up per shot
-    [SerializeField] float recoverSpeed = 10f;        // degrees/s return
+    [SerializeField] private float fireRate = 10f;
+    [SerializeField] private float recoilKick = 0.5f; // degrees up
+    [SerializeField] private float recoverSpeed = 6f;   // deg/sec down
 
-    GunServer server;
-    GunFx fx;
-
-    float nextShotTime;
-    float totalKick;
-    bool triggerLast;
-    Coroutine recoverCo;
+    private GunServer server;
+    private GunFx fx;
+    private float nextShotTime;
+    private float totalKick;
+    private bool triggerLast;
+    private Coroutine recoverCo;
 
     void Awake()
     {
         server = GetComponent<GunServer>();
         fx = GetComponent<GunFx>();
+
+        if (impulseSource == null)
+            impulseSource = GetComponent<CinemachineImpulseSource>();
+
+        if (cinemachineCamera == null)
+            cinemachineCamera = UnityEngine.Object
+                .FindFirstObjectByType<CinemachineCamera>();
+
+        panTilt = cinemachineCamera
+            .GetComponent<CinemachinePanTilt>();
+        if (panTilt == null)
+            Debug.LogError($"Missing Pan Tilt extension on {cinemachineCamera.name}");
     }
 
     void Update()
@@ -39,12 +59,12 @@ public class GunInput : NetworkBehaviour
                 StopCoroutine(recoverCo);
 
             nextShotTime = Time.time + 1f / fireRate;
-
             FireShot();
         }
-
-        if (!trigger && triggerLast && totalKick > 0f)
+        else if (!trigger && triggerLast && totalKick > 0f)
+        {
             recoverCo = StartCoroutine(RecoverRecoil());
+        }
 
         triggerLast = trigger;
     }
@@ -52,9 +72,11 @@ public class GunInput : NetworkBehaviour
     void FireShot()
     {
         Camera cam = Camera.main;
-
-        Ray camRay = cam.ScreenPointToRay(
-                      new Vector3(Screen.width * .5f, Screen.height * .5f, 0));
+        Ray camRay = cam.ScreenPointToRay(new Vector3(
+            Screen.width * 0.5f,
+            Screen.height * 0.5f,
+            0f
+        ));
 
         Vector3 dst = camRay.origin + camRay.direction * server.Range;
         if (Physics.Raycast(camRay, out var hit, server.Range, server.HitMask))
@@ -66,29 +88,23 @@ public class GunInput : NetworkBehaviour
         fx.PlayMuzzleFlash();
         fx.SpawnTracer(src, dst);
 
-        var root = transform.root.Find("PlayerCameraRoot");
-        if (root)
-        {
-            root.localRotation *= Quaternion.Euler(-recoilKick, 0, 0);
-            totalKick += recoilKick;
-        }
+        impulseSource.GenerateImpulse();
+
+        panTilt.TiltAxis.Value -= recoilKick;
+        totalKick += recoilKick;
 
         server.ShootServerRpc(src, dir);
     }
 
-    System.Collections.IEnumerator RecoverRecoil()
+    IEnumerator RecoverRecoil()
     {
-        var root = transform.root.Find("PlayerCameraRoot");
-        if (!root) yield break;
-
         while (totalKick > 0f)
         {
-            if (Mouse.current.leftButton.isPressed) yield break;
+            if (Mouse.current.leftButton.isPressed)
+                yield break;
 
-            float step = recoverSpeed * Time.deltaTime;
-            step = Mathf.Min(step, totalKick);
-
-            root.localRotation *= Quaternion.Euler(step, 0f, 0f);
+            float step = Mathf.Min(totalKick, recoverSpeed * Time.deltaTime);
+            panTilt.TiltAxis.Value += step;
             totalKick -= step;
 
             yield return null;
