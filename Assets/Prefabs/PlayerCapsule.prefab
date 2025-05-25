@@ -62,7 +62,7 @@ Transform:
   m_Children:
   - {fileID: 2013113431255336243}
   - {fileID: 6086175465110009080}
-  m_Father: {fileID: 4434690420241815759}
+  m_Father: {fileID: 4777038704153646502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1807735278129095188
 GameObject:
@@ -148,6 +148,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   impulseSource: {fileID: 8105749302482814691}
   cinemachineCamera: {fileID: 2431309479663075583}
+  gunMovement: {fileID: 7209493303088413561}
   muzzle: {fileID: 6086175465110009080}
   fireRate: 10
   recoilKick: 0.5
@@ -402,7 +403,6 @@ Transform:
   - {fileID: 8609424272992157243}
   - {fileID: 3770157035445731395}
   - {fileID: 8469763987483860408}
-  - {fileID: 2968861461206603768}
   - {fileID: 5253391479184023579}
   m_Father: {fileID: 4017180224725308025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -771,7 +771,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4777038704153646502}
   m_Father: {fileID: 4434690420241815759}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6412782229223440630
@@ -946,6 +947,82 @@ MonoBehaviour:
     DissipationDistance: 100
     PropagationSpeed: 343
   DefaultVelocity: {x: 0, y: 0, z: 0.5}
+--- !u!1 &9018800350448450175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4777038704153646502}
+  - component: {fileID: 7209493303088413561}
+  m_Layer: 8
+  m_Name: WeaponHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4777038704153646502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018800350448450175}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2968861461206603768}
+  m_Father: {fileID: 8469763987483860408}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7209493303088413561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018800350448450175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d656511275adc444e9cd826986727e63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kickDistance: 0.06
+  returnSpeed: 14
+  recoilCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  swayAmount: 0.01
+  bobFrequency: 7
+  swayStartSpeed: 0.2
+  fullSwaySpeed: 2
+  cc: {fileID: 8516985163022663979}
 --- !u!1001 &1072759909287570241
 PrefabInstance:
   m_ObjectHideFlags: 0

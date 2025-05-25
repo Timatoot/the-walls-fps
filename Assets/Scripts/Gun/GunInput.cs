@@ -13,6 +13,7 @@ public class GunInput : NetworkBehaviour
     [Header("Real Aim Kick")]
     [SerializeField] private CinemachineCamera cinemachineCamera;
     private CinemachinePanTilt panTilt;
+    [SerializeField] private GunMovement gunMovement;
 
     [Header("References")]
     [SerializeField] private Transform muzzle;
@@ -72,6 +73,7 @@ public class GunInput : NetworkBehaviour
     void FireShot()
     {
         Camera cam = Camera.main;
+
         Ray camRay = cam.ScreenPointToRay(new Vector3(
             Screen.width * 0.5f,
             Screen.height * 0.5f,
@@ -87,6 +89,8 @@ public class GunInput : NetworkBehaviour
 
         fx.PlayMuzzleFlash();
         fx.SpawnTracer(src, dst);
+
+        gunMovement.Fire();
 
         impulseSource.GenerateImpulse();
 
