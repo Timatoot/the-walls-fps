@@ -52,15 +52,26 @@ public class GunInput : NetworkBehaviour
     {
         if (!IsOwner) return;
 
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+            server.ReloadServerRpc();
+
         bool trigger = Mouse.current.leftButton.isPressed;
 
-        if (trigger && Time.time >= nextShotTime)
+        if (trigger &&
+        Time.time >= nextShotTime &&
+        server.AmmoInMag.Value > 0 &&
+        !server.Reloading.Value)
         {
             if (!triggerLast && recoverCo != null)
                 StopCoroutine(recoverCo);
 
             nextShotTime = Time.time + 1f / fireRate;
             FireShot();
+        }
+        else if (trigger && server.AmmoInMag.Value == 0)
+        {
+            // TODO: play empty mag sound
+            server.ReloadServerRpc();
         }
         else if (!trigger && triggerLast && totalKick > 0f)
         {

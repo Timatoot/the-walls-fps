@@ -15,8 +15,8 @@ TagManager:
   - 
   - PostProcess
   - Player
-  - Weapon
-  - 
+  - LocalWeapon
+  - RemoteWeapon
   - 
   - 
   - 
