@@ -5,17 +5,33 @@ using System.Collections;
 public class GunFx : NetworkBehaviour
 {
     [Header("Prefabs / VFX")]
-    [SerializeField] ParticleSystem muzzleFlash;
+    [SerializeField] GameObject muzzleFlash;
     [SerializeField] ParticleSystem hitSparkPrefab;
     [SerializeField] GameObject tracerPrefab;
 
     [Header("Tracer")]
     [SerializeField] float tracerSpeed = 240f;       // m / s (fast = nearly hitscan)
 
-    public void PlayMuzzleFlash()
+    [Header("Audio")]
+    [SerializeField] AudioSource shotSource;        // 3-D source, SpatialBlend = 1
+    [SerializeField] AudioClip[] shotClips;
+    [SerializeField] AudioClip emptyMagClip;
+    [SerializeField] AudioClip reloadClip;
+
+    public void PlayShotSound()
     {
-        if (muzzleFlash) muzzleFlash.Play();
+        if (shotSource && shotClips.Length > 0)
+        {
+            var clip = shotClips[Random.Range(0, shotClips.Length)];
+            shotSource.pitch = Random.Range(0.97f, 1.03f);
+            shotSource.PlayOneShot(clip);
+        }
     }
+
+    public void PlayEmptyMag() { if (shotSource && emptyMagClip) shotSource.PlayOneShot(emptyMagClip); }
+    public void PlayReload() { if (shotSource && reloadClip) shotSource.PlayOneShot(reloadClip); }
+
+    public void PlayMuzzleFlash() { if (muzzleFlash) muzzleFlash.SetActive(true); }
 
     public void SpawnHitFx(Vector3 pos, Vector3 normal)
     {
@@ -37,13 +53,13 @@ public class GunFx : NetworkBehaviour
         float dist = Vector3.Distance(from, to);
         float t = 0f;
 
-        while (t < 1f && tf) // abort if object destroyed
+        while (t < 1f && tf)
         {
             t += Time.deltaTime * tracerSpeed / dist;
             tf.position = Vector3.Lerp(from, to, t);
             yield return null;
         }
 
-        if (tf) Destroy(tf.gameObject, 0.02f); // trail fade delay
+        if (tf) Destroy(tf.gameObject, 0.02f);
     }
 }

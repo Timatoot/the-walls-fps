@@ -49,6 +49,11 @@ public class GunServer : NetworkBehaviour
 
     IEnumerator ReloadRoutine()
     {
+        if (IsOwner)
+        {
+            var fx = GetComponent<GunFx>();
+            fx.PlayReload();
+        }
         Reloading.Value = true;
         yield return new WaitForSeconds(reloadTime);
 
@@ -82,6 +87,7 @@ public class GunServer : NetworkBehaviour
     {
         if (IsOwner) return;
         var fx = GetComponent<GunFx>();
+        fx.PlayShotSound();
         fx.SpawnTracer(src, end);
         fx.SpawnHitFx(end, (end - src).normalized);
     }

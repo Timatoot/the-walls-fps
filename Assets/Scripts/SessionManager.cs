@@ -8,6 +8,8 @@ public class SessionManager : MonoBehaviour
     public static SessionManager Instance { get; private set; }
     public ISession CurrentSession { get; private set; }
 
+    [SerializeField] Camera menuCamera;
+
     void Awake()
     {
         if (Instance) { Destroy(gameObject); return; }
@@ -22,12 +24,16 @@ public class SessionManager : MonoBehaviour
             MaxPlayers = maxPlayers
         }.WithRelayNetwork();
 
+        menuCamera.gameObject.SetActive(false);
+
         CurrentSession = await MultiplayerService.Instance.CreateSessionAsync(options);
         return CurrentSession.Code;
     }
 
     public async Task JoinAsync(string joinCode)
     {
+        menuCamera.gameObject.SetActive(false);
+
         CurrentSession = await MultiplayerService
                             .Instance.JoinSessionByCodeAsync(joinCode);
     }

@@ -72,7 +72,7 @@ namespace StarterAssets
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 
-		private const float _threshold = 0f;
+		private const float _threshold = 0.01f;
 
 		private bool IsCurrentDeviceMouse
 		{
@@ -93,7 +93,9 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
-		}
+
+            RotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", RotationSpeed);
+        }
 
 		private void Start()
 		{
@@ -122,7 +124,14 @@ namespace StarterAssets
 			CameraRotation();
 		}
 
-		private void GroundedCheck()
+        public void SetSensitivity(float value)
+        {
+            RotationSpeed = value;
+            PlayerPrefs.SetFloat("MouseSensitivity", value);
+            PlayerPrefs.Save();
+        }
+
+        private void GroundedCheck()
 		{
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);

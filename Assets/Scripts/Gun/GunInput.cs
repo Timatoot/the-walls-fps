@@ -70,7 +70,6 @@ public class GunInput : NetworkBehaviour
         }
         else if (trigger && server.AmmoInMag.Value == 0)
         {
-            // TODO: play empty mag sound
             server.ReloadServerRpc();
         }
         else if (!trigger && triggerLast && totalKick > 0f)
@@ -99,6 +98,7 @@ public class GunInput : NetworkBehaviour
         Vector3 dir = (dst - src).normalized;
 
         fx.PlayMuzzleFlash();
+        fx.PlayShotSound();
         fx.SpawnTracer(src, dst);
 
         gunMovement.Fire();
