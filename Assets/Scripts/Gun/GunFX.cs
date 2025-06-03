@@ -8,6 +8,7 @@ public class GunFx : NetworkBehaviour
     [SerializeField] GameObject muzzleFlash;
     [SerializeField] ParticleSystem hitSparkPrefab;
     [SerializeField] GameObject tracerPrefab;
+    [SerializeField] ParticleSystem headshotSparkPrefab;
 
     [Header("Tracer")]
     [SerializeField] float tracerSpeed = 240f;       // m / s (fast = nearly hitscan)
@@ -17,6 +18,8 @@ public class GunFx : NetworkBehaviour
     [SerializeField] AudioClip[] shotClips;
     [SerializeField] AudioClip emptyMagClip;
     [SerializeField] AudioClip reloadClip;
+    [SerializeField] private AudioSource reloadSource;
+    [SerializeField] private float reloadQuietFactor = 0.4f;
 
     public void PlayShotSound()
     {
@@ -29,7 +32,14 @@ public class GunFx : NetworkBehaviour
     }
 
     public void PlayEmptyMag() { if (shotSource && emptyMagClip) shotSource.PlayOneShot(emptyMagClip); }
-    public void PlayReload() { if (shotSource && reloadClip) shotSource.PlayOneShot(reloadClip); }
+    public void PlayReload(bool quiet = false)
+    {
+        if (reloadSource && reloadClip)
+        {
+            reloadSource.volume = quiet ? reloadQuietFactor : 1f;
+            reloadSource.PlayOneShot(reloadClip);
+        }
+    }
 
     public void PlayMuzzleFlash() { if (muzzleFlash) muzzleFlash.SetActive(true); }
 
@@ -38,6 +48,13 @@ public class GunFx : NetworkBehaviour
         if (!hitSparkPrefab) return;
         var fx = Instantiate(hitSparkPrefab, pos, Quaternion.LookRotation(normal));
         Destroy(fx.gameObject, 1.5f);
+    }
+
+    public void SpawnHeadshotFx(Vector3 pos, Vector3 normal)
+    {
+        if (!headshotSparkPrefab) return;
+        var spark = Instantiate(headshotSparkPrefab, pos, Quaternion.LookRotation(normal));
+        Destroy(spark.gameObject, 1.5f);
     }
 
     public void SpawnTracer(Vector3 origin, Vector3 hitPoint)

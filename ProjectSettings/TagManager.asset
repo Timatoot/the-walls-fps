@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - CinemachineTarget
+  - SecondCamera
+  - BulletSpawn
+  - Weapon
+  - LevelPart
+  - Dummie
   layers:
   - Default
   - TransparentFX
@@ -17,7 +22,7 @@ TagManager:
   - Player
   - LocalWeapon
   - RemoteWeapon
-  - 
+  - Hitbox
   - 
   - 
   - 

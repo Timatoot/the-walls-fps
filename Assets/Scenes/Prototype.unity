@@ -926,11 +926,11 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 791239571}
-    PlayerPrefab: {fileID: 7092649178237307245, guid: 7e403f994b8cf4e4f8505d739e8b6df0, type: 3}
+    PlayerPrefab: {fileID: 7092649178237307245, guid: 3336754913ea7984f8768514bee479b1, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 13926525c9942524785a48d548f96193, type: 2}
-    TickRate: 30
+    TickRate: 64
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
     ConnectionData: 

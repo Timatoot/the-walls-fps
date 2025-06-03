@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   impulseSource: {fileID: 8105749302482814691}
-  cinemachineCamera: {fileID: 2431309479663075583}
+  cinemachineCamera: {fileID: 0}
   gunMovement: {fileID: 7209493303088413561}
   muzzle: {fileID: 6086175465110009080}
   fireRate: 10
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3521435773
+  GlobalObjectIdHash: 1184643268
   InScenePlacedSourceGlobalObjectIdHash: 3745078194
   DeferredDespawnTick: 0
   Ownership: 1
@@ -1502,17 +1502,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 698617398841482868}
   m_SourcePrefab: {fileID: 100100000, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
---- !u!114 &2431309479663075583 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3413317726339738558, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
-  m_PrefabInstance: {fileID: 1072759909287570241}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8609424272992157636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8609424272992157243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}

@@ -29,6 +29,9 @@ public class GunInput : NetworkBehaviour
     private float totalKick;
     private bool triggerLast;
     private Coroutine recoverCo;
+    private int predictedAmmo;
+
+    public int CurrentMag => predictedAmmo;
 
     void Awake()
     {
@@ -44,16 +47,23 @@ public class GunInput : NetworkBehaviour
 
         panTilt = cinemachineCamera
             .GetComponent<CinemachinePanTilt>();
-        if (panTilt == null)
-            Debug.LogError($"Missing Pan Tilt extension on {cinemachineCamera.name}");
+
+        predictedAmmo = server.AmmoInMag.Value;
+        server.AmmoInMag.OnValueChanged += (_, srv) => predictedAmmo = srv;
     }
 
     void Update()
     {
         if (!IsOwner) return;
 
-        if (Keyboard.current.rKey.wasPressedThisFrame)
+        if (Keyboard.current.rKey.wasPressedThisFrame && 
+            !server.Reloading.Value && 
+            server.AmmoInMag.Value != server.MaxAmmoInMag.Value)
+        {
+            StartCoroutine(LocalReloadDisplay());
+            fx.PlayReload();
             server.ReloadServerRpc();
+        }
 
         bool trigger = Mouse.current.leftButton.isPressed;
 
@@ -68,8 +78,12 @@ public class GunInput : NetworkBehaviour
             nextShotTime = Time.time + 1f / fireRate;
             FireShot();
         }
-        else if (trigger && server.AmmoInMag.Value == 0)
+        else if (trigger &&
+        server.AmmoInMag.Value == 0 &&
+        !server.Reloading.Value)
         {
+            fx.PlayReload();
+            StartCoroutine(LocalReloadDisplay());
             server.ReloadServerRpc();
         }
         else if (!trigger && triggerLast && totalKick > 0f)
@@ -101,6 +115,8 @@ public class GunInput : NetworkBehaviour
         fx.PlayShotSound();
         fx.SpawnTracer(src, dst);
 
+        predictedAmmo--;
+
         gunMovement.Fire();
 
         impulseSource.GenerateImpulse();
@@ -124,5 +140,16 @@ public class GunInput : NetworkBehaviour
 
             yield return null;
         }
+    }
+
+    IEnumerator LocalReloadDisplay()
+    {
+        float t = 0f;
+        while (t < server.ReloadTime)
+        {
+            t += Time.deltaTime;    
+            yield return null;
+        }
+        predictedAmmo = server.MagazineSize;
     }
 }
